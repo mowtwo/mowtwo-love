@@ -9,7 +9,7 @@
   <title>时间线：{data.title}</title>
 </svelte:head>
 
-<article class="max-w-100 ma">
+<article class="max-w-200 ma">
   <h1 class="text-center">{data.title}</h1>
   <div class="text-right">
     <div class="flex items-center justify-center text-3.5 text-gray gap-3">
