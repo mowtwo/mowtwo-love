@@ -32,4 +32,14 @@
   </section>
 </article>
 
-<style lang="scss"></style>
+<style lang="scss">
+  .post-content {
+    :global(img) {
+      width: 100%;
+      margin: 2rem 0;
+    }
+    :global(p) {
+      line-height: 1.4rem;
+    }
+  }
+</style>
