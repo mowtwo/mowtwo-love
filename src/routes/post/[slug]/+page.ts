@@ -1,6 +1,7 @@
 import type { Load } from "@sveltejs/kit"
 
-export const prerender = false
+export const prerender = true
+export const ssr = true
 
 export const load: Load = async ({ params }) => {
   const post = await import(`../../../posts/${params.slug}.md`)
