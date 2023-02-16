@@ -1,6 +1,9 @@
 <script lang="ts">
+  import Notifications from "svelte-notifications";
 </script>
 
-<div class="app">
-  <slot />
-</div>
+<Notifications>
+  <div class="app">
+    <slot />
+  </div>
+</Notifications>

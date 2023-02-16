@@ -26,6 +26,7 @@ specifiers:
   sass: ^1.58.1
   svelte: ^3.54.0
   svelte-check: ^3.0.1
+  svelte-notifications: ^0.9.98
   svelte-vertical-timeline: ^1.0.0
   tslib: ^2.4.1
   typescript: ^4.9.3
@@ -50,6 +51,7 @@ dependencies:
   retext-english: 4.1.0
   retext-equality: 6.6.0
   sass: 1.58.1
+  svelte-notifications: 0.9.98
   svelte-vertical-timeline: 1.0.0
   vfile-reporter: 7.0.5
 
@@ -2038,6 +2040,10 @@ packages:
     dependencies:
       svelte: 3.55.1
     dev: true
+
+  /svelte-notifications/0.9.98:
+    resolution: {integrity: sha512-w7/sqnQtEjM5uzjb3HfB50RE6KMuuWEQZxfBw86IykslHFJRcTuRvaUv503UMqY/LaioOu6w9mjJTO+ejiReSQ==}
+    dev: false
 
   /svelte-preprocess/5.0.1_ocw7eppkva45e2bkzk22usbvdq:
     resolution: {integrity: sha512-0HXyhCoc9rsW4zGOgtInylC6qj259E1hpFnJMJWTf+aIfeqh4O/QHT31KT2hvPEqQfdjmqBR/kO2JDkkciBLrQ==}

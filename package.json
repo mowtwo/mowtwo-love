@@ -44,6 +44,7 @@
 		"retext-english": "^4.1.0",
 		"retext-equality": "^6.6.0",
 		"sass": "^1.58.1",
+		"svelte-notifications": "^0.9.98",
 		"svelte-vertical-timeline": "^1.0.0",
 		"vfile-reporter": "^7.0.5"
 	},
