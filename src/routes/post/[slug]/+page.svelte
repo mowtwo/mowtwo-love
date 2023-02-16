@@ -32,7 +32,7 @@
   const shareHandle = async () => {
     try {
       const shareData: ShareData = {
-        title: `陈爱上羊`,
+        title: `陈爱上杨`,
         text: data.title ?? "一则小故事",
         url: location.href,
       };
@@ -52,19 +52,26 @@
     }
   };
 
-  const imageViewer = (target: HTMLImageElement) => {
+  const imageViewer = (
+    target: HTMLImageElement,
+    options: Viewer.Options = {}
+  ) => {
     const viewer = new Viewer(target, {
+      ...options,
       toolbar: false,
       navbar: false,
-      hidden() {
+      hidden(e) {
         viewer.destroy();
         hideNavBar = false;
+        options?.hidden?.(e);
       },
-      show() {
+      show(e) {
         hideNavBar = true;
+        options?.show?.(e);
       },
     });
     viewer.show();
+    return viewer;
   };
 
   const contentClick = (e: MouseEvent) => {
@@ -104,7 +111,11 @@
     const img = new Image();
     img.src = snappingCanvas.toDataURL("image/png");
     img.addEventListener("load", async () => {
-      imageViewer(img);
+      imageViewer(img, {
+        hidden() {
+          snapping = false;
+        },
+      });
       try {
         snappingCanvas.toBlob(async (blob) => {
           if (!blob) {
@@ -112,9 +123,13 @@
           }
           try {
             const shareData: ShareData = {
-              title: `陈爱上羊`,
+              title: `陈爱上杨`,
               text: data.title ?? "一则小故事",
-              files: [blob as File],
+              files: [
+                new File([blob], `陈爱上杨-${data.title ?? "一则小故事"}.png`, {
+                  type: blob.type,
+                }),
+              ],
             };
 
             await navigator.share(shareData);
@@ -123,20 +138,25 @@
               position: "top-center",
               type: "success",
             });
-          } catch {
+          } catch (e) {
+            console.log(e);
             addNotification({
               text: "分享出了点问题，再试试吧",
               position: "top-center",
               type: "warning",
             });
+          } finally {
+            snapping = false;
           }
-        });
+        }, "image/png");
       } catch {
         addNotification({
-          text: "分享出了点问题，再试试吧",
+          text: "截图出了点问题，再试试吧",
           position: "top-center",
           type: "warning",
         });
+      } finally {
+        snapping = false;
       }
     });
   };
