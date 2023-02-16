@@ -8,6 +8,7 @@
   import { tick } from "svelte";
   // @ts-ignore
   import QRCode from "qrcode";
+  import html2canvas from "html2canvas";
 
   const { addNotification } = getNotificationsContext();
 
@@ -18,6 +19,8 @@
   let snapping = false;
 
   let snappingCanvas: HTMLCanvasElement;
+
+  let snapTarget: HTMLDivElement;
 
   let scroll_timer: number | NodeJS.Timeout;
 
@@ -108,8 +111,9 @@
         return;
       }
     });
+    const snapResult = await html2canvas(snapTarget);
     const img = new Image();
-    img.src = snappingCanvas.toDataURL("image/png");
+    img.src = snapResult.toDataURL("image/png");
     img.addEventListener("load", async () => {
       imageViewer(img, {
         hidden() {
@@ -117,7 +121,7 @@
         },
       });
       try {
-        snappingCanvas.toBlob(async (blob) => {
+        snapResult.toBlob(async (blob) => {
           if (!blob) {
             return;
           }
@@ -168,7 +172,7 @@
 
 <svelte:window on:scroll={toggleScroll} />
 
-<div>
+<div bind:this={snapTarget}>
   <article
     class="max-w-200 ma {hideNavBar || snapping ? 'mb-0' : 'mb-20'} {snapping
       ? 'max-h-200 overflow-hidden'
