@@ -4,6 +4,7 @@ export interface Data {
   title: string;
   startedDate: string;
   finished: boolean;
-  finisheDate: string;
+  finishedDate: string;
   location: string;
+  poster: string
 }

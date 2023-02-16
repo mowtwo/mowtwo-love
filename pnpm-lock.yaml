@@ -36,6 +36,7 @@ specifiers:
   unocss: ^0.49.4
   vfile: ^5.3.7
   vfile-reporter: ^7.0.5
+  viewerjs: ^1.11.2
   vite: ^4.0.0
 
 dependencies:
@@ -54,6 +55,7 @@ dependencies:
   svelte-notifications: 0.9.98
   svelte-vertical-timeline: 1.0.0
   vfile-reporter: 7.0.5
+  viewerjs: 1.11.2
 
 devDependencies:
   '@fontsource/fira-mono': 4.5.10
@@ -2333,6 +2335,10 @@ packages:
       is-buffer: 2.0.5
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
+
+  /viewerjs/1.11.2:
+    resolution: {integrity: sha512-z7N9R91ORhtLvOUxN7GoIl+MFVVMbtWNB1T2UmTKuMlzc4EevS+/bletZcIwDf8RIUzk2CFMdleQzcsjsfLl+A==}
+    dev: false
 
   /vite/4.1.1_sass@1.58.1:
     resolution: {integrity: sha512-LM9WWea8vsxhr782r9ntg+bhSFS06FJgCvvB0+8hf8UWtvaiDagKYWXndjfX6kGl74keHJUcpzrQliDXZlF5yg==}

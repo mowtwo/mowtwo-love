@@ -6,9 +6,9 @@ export const ssr = true
 export const load: Load = async ({ params }) => {
   const post = await import(`../../../posts/${params.slug}.md`)
   const content = post.default
-  const { title, startedDate, finished, finisheDate, location, type } = post.metadata
+  const { title, startedDate, finished, finishedDate, location, type, poster } = post.metadata
 
   return {
-    title, startedDate, finished, finisheDate, location, content, type
+    title, startedDate, finished, finishedDate, location, content, type, poster
   }
 }
