@@ -65,6 +65,19 @@
       imageViewer(e.target);
     }
   };
+
+  const addImageTitle = (target: HTMLImageElement) => {
+    if (target.hasAttribute("title")) {
+      return;
+    }
+    target.setAttribute("title", `点击放大图片：${target.src}`);
+  };
+
+  const contentHover = (e: MouseEvent) => {
+    if (e.target instanceof HTMLImageElement) {
+      addImageTitle(e.target);
+    }
+  };
 </script>
 
 <svelte:head>
@@ -93,7 +106,12 @@
   </div>
 
   <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <section class="post-content p-2" on:click={contentClick}>
+  <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+  <section
+    class="post-content p-2"
+    on:click={contentClick}
+    on:mouseover={contentHover}
+  >
     <svelte:component this={data.content} />
   </section>
 </article>
@@ -128,6 +146,7 @@
     :global(img) {
       width: 100%;
       margin: 2rem 0;
+      cursor: pointer;
     }
     :global(p) {
       line-height: 1.4rem;
